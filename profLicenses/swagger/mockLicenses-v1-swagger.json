@@ -9,7 +9,7 @@
   },
 
 
-  "host": "https://qiitqkcz0b.execute-api.us-west-2.amazonaws.com",
+  "host": "qiitqkcz0b.execute-api.us-west-2.amazonaws.com",
   "basePath": "/v1",
   
   "schemes": [
