@@ -1,0 +1,71 @@
+{
+  "swagger": "2.0",
+  "info": {
+
+    "version": "new version",
+    "title": "Copy of helloWorld",
+    "description":"Hello World simple Sample API"
+    
+  },
+  
+
+  "host": "ooyts8jh0f.execute-api.us-west-2.amazonaws.com",
+  "basePath": "/dev",
+  
+
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/hello-world": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "requestTemplates": {
+            "application/json": "{\r\n  \"name\": \"$input.params('name')\"\r\n}"
+          },
+          
+
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:765209470699:function:helloWorld/invocations",
+          "credentials": "arn:aws:iam::765209470699:role/lambda_gateway_execution",
+
+
+          "passthroughBehavior": "when_no_templates",
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "httpMethod": "POST",
+          "type": "aws"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object"
+    }
+  }
+}
