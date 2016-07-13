@@ -1,0 +1,228 @@
+{
+  "swagger": "2.0",
+  "info": {
+
+    "version": "new_version",
+    "title": "Copy of mockLicenses",
+    "description": "Professional License Validation API - mock version with sample data"
+
+  },
+
+
+  "host": "ooyts8jh0f.execute-api.us-west-2.amazonaws.com",
+  "basePath": "/v1",
+  
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/license_statuses": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Agency",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\r\n  \"Agency\": \"$input.params('Agency')\"\r\n}"
+          },
+          
+
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:765209470699:function:getLicenseStatuses/invocations",
+          "credentials": "arn:aws:iam::765209470699:role/lambda_gateway_execution",
+
+
+          "passthroughBehavior": "when_no_templates",
+          "httpMethod": "POST",
+          "type": "aws"
+        }
+      }
+    },
+    "/license_types": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Board_Code",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "License_Type",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\r\n  \"Board_Code\": \"$input.params('Board_Code')\",\r\n  \"License_Type\": \"$input.params('License_Type')\"\r\n}"
+          },
+          
+          
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:765209470699:function:getLicenseTypes/invocations",
+          "credentials": "arn:aws:iam::765209470699:role/lambda_gateway_execution",
+
+
+          "passthroughBehavior": "when_no_templates",
+          "httpMethod": "POST",
+          "type": "aws"
+        }
+      }
+    },
+    "/licenses": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "licensee",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "zipcode",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\r\n  \"licensee\": \"$input.params('licensee')\",\r\n  \"type\": \"$input.params('type')\",\r\n  \"status\": \"$input.params('status')\",\r\n  \"zipcode\": \"$input.params('zipcode')\"\r\n}"
+          },
+
+
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:765209470699:function:getAllLicenses/invocations",
+          "credentials": "arn:aws:iam::765209470699:role/lambda_gateway_execution",
+
+          "passthroughBehavior": "when_no_templates",
+          "httpMethod": "POST",
+          "type": "aws"
+        }
+      }
+    },
+    "/licenses/{id}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200"
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{ \"id\": \"$input.params('id')\" }"
+          },
+          
+
+          "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:765209470699:function:getLicenseDetails/invocations",
+          "credentials": "arn:aws:iam::765209470699:role/lambda_gateway_execution",
+
+
+          "passthroughBehavior": "when_no_templates",
+          "httpMethod": "POST",
+          "type": "aws"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Empty": {
+      "type": "object"
+    }
+  }
+}
