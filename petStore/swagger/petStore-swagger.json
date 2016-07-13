@@ -8,10 +8,10 @@
 
   },
   
-  "host_old": "jub84fv168.execute-api.us-east-1.amazonaws.com",
+  "host_old": "oieki84e1f.execute-api.us-west-2.amazonaws.com",
   "basePath_old": "/pet_store_sample",
 
-  "host": "ooyts8jh0f.execute-api.us-west-2.amazonaws.com",
+  "host": "oieki84e1f.execute-api.us-west-2.amazonaws.com",
   "basePath": "/dev",
   
   "schemes": [
